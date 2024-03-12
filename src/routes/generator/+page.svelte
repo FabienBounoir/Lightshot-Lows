@@ -17,41 +17,53 @@
 	});
 </script>
 
-<div class="container">
-	{#if link}
-		<img src={link} alt="random screenshot" />
-	{/if}
-	<button disabled={!generate} on:click={getRandomLightshot}
-		><i class="fa-solid fa-magnifying-glass"></i> Find new Lightshot</button
-	>
-</div>
+<!-- <div class="container"> -->
+{#if link}
+	<img src={link} alt="random screenshot" />
+{/if}
+<button disabled={!generate} on:click={getRandomLightshot}
+	><i class="fa-solid fa-magnifying-glass"></i> Find new Lightshot</button
+>
+
+<!-- </div> -->
 
 <style lang="scss">
-	.container {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		min-height: inherit;
-		gap: 1rem;
+	// .container {
+	// 	display: flex;
+	// 	flex-direction: column;
+	// 	justify-content: center;
+	// 	align-items: center;
+	// 	min-height: inherit;
+	// 	gap: 1rem;
+	// 	overflow: hidden;
+	// 	max-height: 90vh;
 
-		img {
-			max-height: 80dvh;
-			max-width: 80dvw;
-		}
+	img {
+		max-height: 80dvh;
+		max-width: 80dvw;
+		position: fixed;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
 
-		button {
-			margin-top: 2.5rem;
-			border-radius: 9999px;
-			padding: 0.625rem 0.875rem;
-			cursor: pointer;
-			transition: scale 0.3s ease-in-out;
-			background-color: rgb(var(--primary-100));
-			border: 2px solid rgb(var(--primary-300));
+	button {
+		position: fixed;
+		bottom: 30px;
+		left: 50%;
+		transform: translate(-50%, 0);
 
-			&:hover {
-				scale: 1.03;
-			}
+		// margin-top: 2.5rem;
+		border-radius: 9999px;
+		padding: 0.625rem 0.875rem;
+		cursor: pointer;
+		transition: scale 0.3s ease-in-out;
+		background-color: rgb(var(--primary-100));
+		border: 2px solid rgb(var(--primary-300));
+
+		&:hover {
+			scale: 1.03;
 		}
 	}
+	// }
 </style>

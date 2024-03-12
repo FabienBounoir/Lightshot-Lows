@@ -60,7 +60,7 @@
 </div>
 
 <div class="container">
-	<div class="column">
+	<div class="column number1">
 		{#each column1 as element}
 			<a href={element.url} target="_blank">
 				<img
@@ -72,7 +72,7 @@
 			</a>
 		{/each}
 	</div>
-	<div class="column">
+	<div class="column number2">
 		{#each column2 as element}
 			<a href={element.url} target="_blank">
 				<img
@@ -84,7 +84,7 @@
 			</a>
 		{/each}
 	</div>
-	<div class="column">
+	<div class="column number3">
 		{#each column3 as element}
 			<a href={element.url} target="_blank">
 				<img
@@ -96,7 +96,7 @@
 			</a>
 		{/each}
 	</div>
-	<div class="column">
+	<div class="column number4">
 		{#each column4 as element}
 			<a href={element.url} target="_blank">
 				<img
@@ -196,6 +196,39 @@
 					}
 				}
 			}
+		}
+	}
+
+	@media (max-width: 1000px) {
+		.number4 {
+			display: none !important;
+		}
+	}
+
+	@media (max-width: 850px) {
+		.number3 {
+			display: none !important;
+		}
+	}
+
+	@media (max-width: 750px) {
+		.homepage {
+			padding: 5rem 0;
+			position: relative;
+
+			.center {
+				width: 98vw;
+				h1 {
+					font-size: 2.5rem !important;
+					font-weight: 500;
+				}
+			}
+		}
+	}
+
+	@media (max-width: 650px) {
+		.number2 {
+			display: none !important;
 		}
 	}
 </style>
