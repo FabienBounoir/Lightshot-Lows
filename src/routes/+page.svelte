@@ -20,10 +20,12 @@
 	let column4 = [];
 
 	let data = [];
+	let total = '---';
 
 	onMount(async () => {
 		const res = await fetch('/_api/lightshot/getElements?number=50').then((res) => res.json());
 		data = res.elements;
+		total = res.totals;
 
 		let elementSize = Math.floor(data.length / 4);
 		column1 = data.slice(0, elementSize);
@@ -56,6 +58,7 @@
 				goto('/generator');
 			}}><i class="fa-solid fa-rocket"></i> Get random lightshot</button
 		>
+		<p>+ {total} collected</p>
 	</div>
 </div>
 
@@ -64,7 +67,7 @@
 		{#each column1 as element}
 			<a href={element.url} target="_blank">
 				<img
-					src={element.link}
+					src={'/_api/image?link=' + btoa(element.link)}
 					alt="random screenshot"
 					style="height: {getRandomHeight()}px;"
 					on:load={handleImageLoad}
@@ -76,7 +79,7 @@
 		{#each column2 as element}
 			<a href={element.url} target="_blank">
 				<img
-					src={element.link}
+					src={'/_api/image?link=' + btoa(element.link)}
 					alt="random screenshot"
 					style="height: {getRandomHeight()}px;"
 					on:load={handleImageLoad}
@@ -88,7 +91,7 @@
 		{#each column3 as element}
 			<a href={element.url} target="_blank">
 				<img
-					src={element.link}
+					src={'/_api/image?link=' + btoa(element.link)}
 					alt="random screenshot"
 					style="height: {getRandomHeight()}px;"
 					on:load={handleImageLoad}
@@ -100,7 +103,7 @@
 		{#each column4 as element}
 			<a href={element.url} target="_blank">
 				<img
-					src={element.link}
+					src={'/_api/image?link=' + btoa(element.link)}
 					alt="random screenshot"
 					style="height: {getRandomHeight()}px;"
 					on:load={handleImageLoad}

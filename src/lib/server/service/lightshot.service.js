@@ -51,6 +51,10 @@ class LightshotService {
 
 		return this.#collection.insertOne({ link, url, date: new Date() });
 	}
+
+	async getTotals() {
+		return this.#collection.countDocuments();
+	}
 }
 
 export const lightshotService = new LightshotService(db.collection("elements"));
