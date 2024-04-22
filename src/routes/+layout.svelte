@@ -1,7 +1,13 @@
 <script>
+	import { inject } from '@vercel/analytics'
 	import '@fortawesome/fontawesome-free/css/all.min.css';
 	import '../app.scss';
 	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
+
+	onMount(() =>{
+		inject()
+	})
 </script>
 
 <div class="page">

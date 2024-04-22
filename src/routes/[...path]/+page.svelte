@@ -64,7 +64,7 @@
 		{#each column1 as element}
 			<a href={element.url} target="_blank">
 				<img
-					src={element.link}
+					src={'/_api/image?link=' + btoa(element.link)}
 					alt="random screenshot"
 					style="height: {getRandomHeight()}px;"
 					on:load={handleImageLoad}
@@ -76,7 +76,7 @@
 		{#each column2 as element}
 			<a href={element.url} target="_blank">
 				<img
-					src={element.link}
+					src={'/_api/image?link=' + btoa(element.link)}
 					alt="random screenshot"
 					style="height: {getRandomHeight()}px;"
 					on:load={handleImageLoad}
@@ -88,7 +88,7 @@
 		{#each column3 as element}
 			<a href={element.url} target="_blank">
 				<img
-					src={element.link}
+					src={'/_api/image?link=' + btoa(element.link)}
 					alt="random screenshot"
 					style="height: {getRandomHeight()}px;"
 					on:load={handleImageLoad}
@@ -100,7 +100,7 @@
 		{#each column4 as element}
 			<a href={element.url} target="_blank">
 				<img
-					src={element.link}
+					src={'/_api/image?link=' + btoa(element.link)}
 					alt="random screenshot"
 					style="height: {getRandomHeight()}px;"
 					on:load={handleImageLoad}

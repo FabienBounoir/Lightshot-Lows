@@ -1,18 +1,8 @@
-# create-svelte
+# Lightshot generator
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+Think twice before using Lightshot! Our investigations reveal that all captures taken with Lightshot are automatically made public on the web for a lifetime. Protect your privacy and opt for a more secure screenshot solution. Your moments should stay yours, not become public domain!
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+<img src="/static/banner.png" alt="Lightshot visual" />
 
 ## Developing
 
