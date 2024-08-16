@@ -17,26 +17,29 @@
 	});
 </script>
 
-<!-- <div class="container"> -->
 {#if link}
-	<img src={link} alt="random screenshot" />
+	<img src={link} alt="Can't display image: {link}" class={generate ? '' : 'loading-animation'} />
+{:else}
+	<p>Loading...</p>
 {/if}
+
 <button disabled={!generate} on:click={getRandomLightshot}
 	><i class="fa-solid fa-magnifying-glass"></i> Find new Lightshot</button
 >
 
-<!-- </div> -->
-
 <style lang="scss">
-	// .container {
-	// 	display: flex;
-	// 	flex-direction: column;
-	// 	justify-content: center;
-	// 	align-items: center;
-	// 	min-height: inherit;
-	// 	gap: 1rem;
-	// 	overflow: hidden;
-	// 	max-height: 90vh;
+	.loading-animation {
+		animation: opacity 0.8s ease-in-out infinite alternate;
+	}
+
+	@keyframes opacity {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0.4;
+		}
+	}
 
 	img {
 		max-height: 80dvh;
@@ -64,6 +67,16 @@
 		&:hover {
 			scale: 1.03;
 		}
+
+		&:disabled:hover {
+			scale: 1;
+		}
+
+		&:disabled {
+			background-color: rgb(var(--primary-300));
+			border-color: rgb(var(--primary-300));
+			color: rgb(var(--primary-100));
+			cursor: not-allowed;
+		}
 	}
-	// }
 </style>
