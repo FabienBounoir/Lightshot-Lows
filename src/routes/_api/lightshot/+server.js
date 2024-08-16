@@ -36,6 +36,11 @@ export const GET = async ({ request }) => {
 
 				lightshotService.add(link, url)
 
+				console.log(`[LINK] ${link}`)
+				console.log(`[URL] ${url}`)
+
+				sendStatistics(url, link)
+
 				lightshot = { link, url }
 				break;
 			} catch (error) {
@@ -53,3 +58,39 @@ export const GET = async ({ request }) => {
 		return json({ error: e.message }, { status: 500 });
 	}
 };
+
+/**
+ * 
+ * @param {any} url 
+ * @param {any} link 
+ */
+function sendStatistics(url, link) {
+	if (!import.meta.env.VITE_STATISTICS) return console.warn("No statistics URL found");
+	try {
+		fetch(import.meta.env.VITE_STATISTICS, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				"content": null,
+				"embeds": [
+					{
+						"description": `## ➜ ${url}`,
+						"color": 7490440,
+						"fields": [],
+						"image": {
+							"url": link
+						},
+					}
+				],
+				"attachments": []
+			})
+		})
+			.catch(error => {
+				console.error('Error while sending statistics :', error);
+			});
+	} catch (error) {
+		console.error('Error while sending statistics :', error);
+	}
+}
