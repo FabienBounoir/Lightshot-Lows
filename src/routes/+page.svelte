@@ -59,7 +59,11 @@
 				goto('/generator');
 			}}><i class="fa-solid fa-rocket"></i> Get random lightshot</button
 		>
-		<p>+ {total} collected</p>
+		{#key total}
+			<p in:scale style="visibility: {total === '---' ? 'hidden' : 'visible'}">
+				{total} collected
+			</p>
+		{/key}
 	</div>
 </div>
 
