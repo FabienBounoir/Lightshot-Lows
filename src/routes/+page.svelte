@@ -24,7 +24,7 @@
 	let total = '---';
 
 	onMount(async () => {
-		const res = await fetch('/_api/lightshot/getElements?number=50').then((res) => res.json());
+		const res = await fetch('/_api/lightshot/getElements?number=20').then((res) => res.json());
 		data = res.elements;
 		total = res.totals;
 
