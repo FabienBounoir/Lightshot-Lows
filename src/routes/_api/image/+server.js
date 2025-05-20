@@ -6,6 +6,10 @@ import { text } from "@sveltejs/kit";
  * @type {import("./$types").RequestHandler}
  */
 export const GET = async ({ url }) => {
+	if (import.meta.env.VITE_DISABLED) {
+		return new Response('ko');
+	}
+
 	const link = url.searchParams.get('link');
 
 	const response = await fetch(atob(link));
