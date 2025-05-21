@@ -6,10 +6,13 @@ import { lightshotService } from "$lib/server/service/lightshot.service";
  */
 export const GET = async ({ request }) => {
 	try {
-		const time = new Date();
+		const startTime = new Date();
 		let lightshot = null
+		let tryCount = 5;
+		let tries = 0;
 
-		while (new Date().getTime() - time.getTime() < 8000) {
+		while (new Date().getTime() - startTime.getTime() < 3000 && tries < tryCount) {
+			tries++;
 			let code = "";
 			const possibleCharacters = "abcdefghijklmnopqrstuvwxyz0123456789";
 			const codeLength = 6;
@@ -28,20 +31,20 @@ export const GET = async ({ request }) => {
 				const regex = /https:\/\/image.prntscr.com\/image\/[a-zA-Z0-9-_]+.png/g
 				let link = site.match(regex)
 				if (!link) continue
-				link = link[0]
-				console.log(`[LINK FOUND] ${link}`)
+				const imageLink = link[0]
+				console.log(`[LINK FOUND] ${imageLink}`)
 
-				const test = await fetch(link)
+				const test = await fetch(imageLink)
 				if (test.status != 200) continue
 
-				lightshotService.add(link, url)
+				lightshotService.add(imageLink, url)
 
-				console.log(`[LINK] ${link}`)
+				console.log(`[LINK] ${imageLink}`)
 				console.log(`[URL] ${url}`)
 
-				sendStatistics(url, link)
+				sendStatistics(url, imageLink)
 
-				lightshot = { link, url }
+				lightshot = { link: imageLink, url }
 				break;
 			} catch (error) {
 				console.error(`[FETCH LIGHTSHOT] ${error}`)
